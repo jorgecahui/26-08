@@ -1,10 +1,6 @@
 spring:
   application:
     name: ms-producto
-  profiles:
-    active: development
-  config:
-    import: optional:configserver:http://root:123456@localhost:7070
 
   datasource:
     url: jdbc:postgresql://localhost:5432/ms_producto
@@ -21,12 +17,19 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 
-server:
-  port: 8081
-
 springdoc:
   api-docs:
     enabled: true
   swagger-ui:
     enabled: true
     path: /doc/swagger-ui.html
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8090/eureka
+  instance:
+    hostname: localhost
+
+server:
+  port: 8081
